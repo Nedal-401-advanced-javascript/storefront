@@ -1,7 +1,7 @@
 import Header from "./component/header";
 import Footer from "./component/footer";
-import Products from "./component/products/products"
 import Categories from './component/categories/categories'
+import Products from "./component/products/products"
 function App() {
   return (
     <>

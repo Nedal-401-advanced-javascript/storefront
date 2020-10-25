@@ -3,18 +3,19 @@ let initalState = {
     {
       name: "electronics",
       display_name: "true",
-      description: "collection of the domistic and industrial tools ",
+      description: "collection of the domistic and industrial tools "
     },
     {
       name: "tools",
       display_name: "true",
-      description: "collection of hand tools for technican",
+      description: "collection of hand tools for technican"
     },
   ],
   active: null,
 };
 
 export default (state = initalState, action) => {
+  console.log('categories here >>', state);
   switch (action.type) {
     case "updateAction":
       return action.payload;

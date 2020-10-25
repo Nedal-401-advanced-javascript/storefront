@@ -25,6 +25,8 @@ let initalState = {
   ],
 };
 
-export default (state = initalState,action)=>{
-  return state.products.filter((product)=>product.category===action.payload)
+export default (state =initalState ,action)=>{
+  console.log('the products is here >> ', state, action);
+  let filteredProducts=state.products.filter((product)=>product.category===action.payload)
+  return {filteredProducts}
 }

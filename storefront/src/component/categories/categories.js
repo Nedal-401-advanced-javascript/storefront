@@ -4,8 +4,8 @@ import { updateActive } from "../../store/categories";
 function Categories(props) {
   return (
     <ul>
-      {props.categories.map((ele,i) => {
-        return <li key={i} onClick={()=>props.activate(ele)}>{ele}</li>;
+      {props.categories.categories.map((ele,i) => {
+        return <li key={i} onClick={()=>props.updateActive(ele.name)}>{ele.name}</li>;
       })}
     </ul>
   );
