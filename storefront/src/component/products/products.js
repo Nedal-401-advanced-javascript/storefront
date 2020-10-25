@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateActive } from "../../store/categories";
-function Categories(props) {
+function Products(props) {
   return (
     <ul>
-      {props.categories.map((ele,i) => {
-        return <li key={i} onClick={()=>props.activate(ele)}>{ele}</li>;
+      {props.Products.map((ele, i) => {
+        return <li key={i}>{ele}</li>;
       })}
     </ul>
   );
 }
 const mapStateToProps = state => ({
-  categories: state.categories
+  Products: state.products
 });
 const mapDispatchToProps = {updateActive};
-export default connect(mapStateToProps, mapDispatchToProps)(Categories);
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
