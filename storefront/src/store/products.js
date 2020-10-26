@@ -29,6 +29,13 @@ let initalState = {
       price: "10$",
       inventoryCount: "1211",
     },
+    {
+      category: "tools",
+      name: "drill",
+      description: "made in jordan ",
+      price: "25$",
+      inventoryCount: "0",
+    }
   ],
 };
 
@@ -39,7 +46,7 @@ export default (state = initalState, action) => {
       return {
         ...state,
         products: state.products.filter(
-          (product) => product.category === action.payload
+          (product) => product.category === action.payload && product.inventoryCount > 0
         ),
       };
 
