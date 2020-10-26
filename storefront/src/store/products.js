@@ -1,3 +1,5 @@
+import products from "../component/products/products";
+
 // Each product should have a category association, name, description, price, inventory count
 let initalState = {
   products: [
@@ -34,8 +36,8 @@ let initalState = {
       name: "drill",
       description: "made in jordan ",
       price: "25$",
-      inventoryCount: "0",
-    }
+      inventoryCount: "1",
+    },
   ],
 };
 
@@ -44,11 +46,22 @@ export default (state = initalState, action) => {
     case "updateAction":
       state = initalState;
       return {
-        ...state,
         products: state.products.filter(
-          (product) => product.category === action.payload && product.inventoryCount > 0
+          (product) =>
+            product.category === action.payload 
         ),
       };
+    case "addToCart":
+      let updatedCount = state.products.map((product) => {
+        if (product.name == action.payload && product.inventoryCount ) {
+          return { ...product, inventoryCount: product.inventoryCount - 1 };
+        } else {
+          return product;
+        }
+
+      });
+      console.log("updatedCount", updatedCount);
+      return {products:updatedCount};
 
     default:
       return state;

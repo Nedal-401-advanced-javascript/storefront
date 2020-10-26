@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateActive } from "../../store/categories";
 import { updateCart } from "../../store/cart";
 function Products(props) {
+  console.log(props.Products);
   return (
     <ul>
       {props.Products.products.map((ele, i) => {
-        return <li key={i}>{ele.name} <button onClick={()=>updateCart(ele.name)}>add to cart</button></li>;
+        return <li key={i}>{ele.name} <button onClick={()=>props.updateCart(ele.name)}>add to cart</button></li>;
       })}
     </ul>
   );
