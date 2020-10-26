@@ -2,12 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateActive } from "../../store/categories";
 function Products(props) {
-  console.log('>>>>>>>>>>>>>>>>>>>>',props.Products.filteredProducts);
-
   return (
     <ul>
-      {props.Products.filteredProducts.map((ele, i) => {
-        return <li key={i}>{ele}</li>;
+      {props.Products.products.map((ele, i) => {
+        return <li key={i}>{ele.name}</li>;
       })}
     </ul>
   );

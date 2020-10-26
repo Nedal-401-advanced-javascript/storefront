@@ -9,6 +9,13 @@ let initalState = {
       inventoryCount: "14511",
     },
     {
+      category: "electronics",
+      name: "PC2",
+      description: "it is kind of computers",
+      price: "1000$",
+      inventoryCount: "14511",
+    },
+    {
       category: "tools",
       name: "Hammer",
       description: "it is small size ",
@@ -25,8 +32,18 @@ let initalState = {
   ],
 };
 
-export default (state =initalState ,action)=>{
-  console.log('the products is here >> ', state, action);
-  let filteredProducts=state.products.filter((product)=>product.category===action.payload)
-  return {filteredProducts}
-}
+export default (state = initalState, action) => {
+  switch (action.type) {
+    case "updateAction":
+      state = initalState;
+      return {
+        ...state,
+        products: state.products.filter(
+          (product) => product.category === action.payload
+        ),
+      };
+
+    default:
+      return state;
+  }
+};
