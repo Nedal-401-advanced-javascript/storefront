@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateActive } from "../../store/categories";
+import { updateCart } from "../../store/cart";
 function Products(props) {
-  console.log('>>>>>>>>>>>>>>>>>>>>',props.Products.filteredProducts);
-
+  console.log(props.Products);
   return (
     <ul>
-      {props.Products.filteredProducts.map((ele, i) => {
-        return <li key={i}>{ele}</li>;
+      {props.Products.products.map((ele, i) => {
+        return <li key={i}>{ele.name} <button onClick={()=>props.updateCart(ele.name)}>add to cart</button></li>;
       })}
     </ul>
   );
@@ -16,5 +15,5 @@ function Products(props) {
 const mapStateToProps = state => ({
   Products: state.products
 });
-const mapDispatchToProps = {updateActive};
+const mapDispatchToProps = {updateCart};
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

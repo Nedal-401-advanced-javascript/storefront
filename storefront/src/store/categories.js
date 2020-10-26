@@ -15,12 +15,9 @@ let initalState = {
 };
 
 export default (state = initalState, action) => {
-  console.log('categories here >>', state);
   switch (action.type) {
     case "updateAction":
-      let active =action.payload
-      return active ;
-
+      return {...state, active: action.payload} ;
     default:
       return state;
   }
