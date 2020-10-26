@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateActive } from "../../store/categories";
 function Products(props) {
-  console.log('>>>>>>>>>>>>>>>>>>>>',props);
+  console.log('>>>>>>>>>>>>>>>>>>>>',props.Products.filteredProducts);
 
   return (
     <ul>
