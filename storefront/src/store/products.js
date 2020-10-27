@@ -4,14 +4,16 @@ import superagent from "superagent";
 // Each product should have a category association, name, description, price, inventory count
 let initalState = {
   products: [],
+  listOnActive: ['choose The categorey you want'],
 };
 
 export default (state = initalState, action) => {
   switch (action.type) {
     case "updateAction":
-      state = initalState;
+      // state = initalState;
       return {
-        products: state.products.filter(
+        ...state,
+        listOnActive: state.products.filter(
           (product) => product.category === action.payload
         ),
       };
@@ -25,11 +27,11 @@ export default (state = initalState, action) => {
         }
       });
       console.log("updatedCount", updatedCount);
-      return { products: updatedCount };
+      return { ...state,products: updatedCount };
     // add new case to handle get
     case "GET":
-      console.log('reached the GET case,', action);
-      return {products:action.payload};
+      console.log("reached the GET case,", action);
+      return {...state, products: action.payload };
 
     default:
       return state;
@@ -55,8 +57,6 @@ const getAction = (payload) => {
     payload: payload,
   };
 };
-
-
 
 // {
 //   category: "electronics",

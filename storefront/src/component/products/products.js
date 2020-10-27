@@ -42,7 +42,7 @@ function Products(props) {
     <div className={classes.root}>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={3}>
-          {props.Products.products.map((ele, i) => {
+          {props.Products.listOnActive.map((ele, i) => {
             return (
               <Grid item xs={4} key={i}>
                 <Card className={classes.root} variant="outlined" key={i}>
@@ -69,7 +69,7 @@ function Products(props) {
                   <CardActions>
                     <Button
                       size="small"
-                      onClick={() => props.updateCart(ele.name)}
+                      onClick={() => props.updateCart(ele)}
                     >
                       add to cart
                     </Button>
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch, getState) => ({
   get: () => dispatch(getRemoteData()),
-  updateCart: () => dispatch(updateCart()),
+  updateCart: (product) => dispatch(updateCart(product)),
 });
 // 2 add remote function
 

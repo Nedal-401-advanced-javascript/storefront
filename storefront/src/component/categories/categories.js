@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateActive } from "../../store/categories";
 function Categories(props) {
+  console.log("at categories>> ",props);
   return (
     <ul>
       {props.categories.categories.map((ele,i) => {

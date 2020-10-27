@@ -6,7 +6,6 @@ function SimpleCart(props) {
   ) : (
     <h3>there ate not items</h3>
   );
-
   return (
     <>
       <h3> there are {items.length} items in the </h3>
