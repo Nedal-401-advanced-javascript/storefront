@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { updateCart } from "../../store/cart";
+import { getRemoteData } from "../../store/products";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -9,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-const useStyles = makeStyles ({
+const useStyles = makeStyles({
   root: {
     // minWidth: 275,
     // width: "25%",
@@ -27,20 +28,23 @@ const useStyles = makeStyles ({
   pos: {
     marginBottom: 12,
   },
-
 });
 function Products(props) {
   const classes = useStyles();
- 
+  //  1 useEffect(at the loading wich treger get )
+  console.log(props);
 
-  console.log(props.Products);
+  useEffect(() => {
+    props.get();
+  }, []);
+
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={3}>
-        {props.Products.products.map((ele, i) => {
-          return (
-              <Grid item xs={4}>
+          {props.Products.listOnActive.map((ele, i) => {
+            return (
+              <Grid item xs={4} key={i}>
                 <Card className={classes.root} variant="outlined" key={i}>
                   <CardContent>
                     <Typography
@@ -65,15 +69,15 @@ function Products(props) {
                   <CardActions>
                     <Button
                       size="small"
-                      onClick={() => props.updateCart(ele.name)}
+                      onClick={() => props.updateCart(ele)}
                     >
                       add to cart
                     </Button>
                   </CardActions>
                 </Card>
-            </Grid>
-          );
-        })}
+              </Grid>
+            );
+          })}
         </Grid>
       </Grid>
     </div>
@@ -83,5 +87,10 @@ function Products(props) {
 const mapStateToProps = (state) => ({
   Products: state.products,
 });
-const mapDispatchToProps = { updateCart };
+const mapDispatchToProps = (dispatch, getState) => ({
+  get: () => dispatch(getRemoteData()),
+  updateCart: (product) => dispatch(updateCart(product)),
+});
+// 2 add remote function
+
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
