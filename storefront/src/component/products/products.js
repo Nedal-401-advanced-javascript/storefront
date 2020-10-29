@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { updateCart } from "../../store/cart";
+import { updateRemoteData } from "../../store/cart";
 import { getRemoteData } from "../../store/products";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch, getState) => ({
   get: () => dispatch(getRemoteData()),
-  updateCart: (product) => dispatch(updateCart(product)),
+  updateCart: (product) => dispatch(updateRemoteData(product)),
 });
 // 2 add remote function
 

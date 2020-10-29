@@ -49,6 +49,8 @@ export const getRemoteData = () => (dispatch) => {
     dispatch(getAction(data.body));
   });
 };
+// getRemotedata ---> superageny and despatch getAction
+
 // getAction ---> send the response to component
 // acton creator function
 const getAction = (payload) => {
@@ -58,38 +60,3 @@ const getAction = (payload) => {
   };
 };
 
-// {
-//   category: "electronics",
-//   name: "PC",
-//   description: "it is kind of computers",
-//   price: "1000$",
-//   inventoryCount: "14511",
-// },
-// {
-//   category: "electronics",
-//   name: "PC2",
-//   description: "it is kind of computers",
-//   price: "1000$",
-//   inventoryCount: "14511",
-// },
-// {
-//   category: "tools",
-//   name: "Hammer",
-//   description: "it is small size ",
-//   price: "10$",
-//   inventoryCount: "11521",
-// },
-// {
-//   category: "tools",
-//   name: "screwdriver",
-//   description: "hand tool",
-//   price: "10$",
-//   inventoryCount: "1211",
-// },
-// {
-//   category: "tools",
-//   name: "drill",
-//   description: "made in jordan ",
-//   price: "25$",
-//   inventoryCount: "1",
-// },
