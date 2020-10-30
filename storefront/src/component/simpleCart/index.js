@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { delItem } from "../../store/cart";
+import { Link } from "react-router-dom";
 function SimpleCart(props) {
   let items = props.Cart.length ? (
     props.Cart.map((item, i) => (
       <li key={i} id={i}>
-        {item.name}{" "}
+        {item.name}
         <button onClick={(e) => props.delItem(e.target.parentNode.id)}>
           X
         </button>
@@ -16,7 +17,9 @@ function SimpleCart(props) {
   );
   return (
     <>
-      <h3> ({items.length}) items in Cart </h3>
+      <h3>
+        <Link to="/cart">({items.length}) items in Cart</Link>
+      </h3>
       <ul>{items}</ul>
     </>
   );
