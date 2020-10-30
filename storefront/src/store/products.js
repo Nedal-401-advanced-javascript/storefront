@@ -26,11 +26,9 @@ export default (state = initalState, action) => {
           return product;
         }
       });
-      console.log("updatedCount", updatedCount);
       return { ...state,products: updatedCount };
     // add new case to handle get
     case "GET":
-      console.log("reached the GET case,", action);
       return {...state, products: action.payload };
 
     default:
@@ -45,7 +43,6 @@ export const getRemoteData = () => (dispatch) => {
   // return a fucntion that will call superagent API
   return superagent.get(url).then((data) => {
     // call my action after getting the API response.
-    console.log(data);
     dispatch(getAction(data.body));
   });
 };

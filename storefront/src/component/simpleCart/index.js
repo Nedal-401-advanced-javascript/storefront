@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { delItem } from "../../store/cart";
 function SimpleCart(props) {
-  console.log(props.Cart);
   let items = props.Cart.length ? (
     props.Cart.map((item, i) => (
       <li key={i} id={i}>

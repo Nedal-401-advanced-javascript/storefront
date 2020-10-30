@@ -32,8 +32,6 @@ const useStyles = makeStyles({
 function Products(props) {
   const classes = useStyles();
   //  1 useEffect(at the loading wich treger get )
-  console.log(props);
-
   useEffect(() => {
     props.get();
   }, []);

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { updateActive } from "../../store/categories";
+import { updateActive,getCategories } from "../../store/categories";
 function Categories(props) {
-  console.log("at categories>> ",props);
+  console.log(props.categories);
+  useEffect(()=>{
+    props.getCategories()
+  })
   return (
     <ul>
       {props.categories.categories.map((ele,i) => {
@@ -14,5 +17,5 @@ function Categories(props) {
 const mapStateToProps = state => ({
   categories: state.categories
 });
-const mapDispatchToProps = {updateActive};
+const mapDispatchToProps = {updateActive,getCategories};
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

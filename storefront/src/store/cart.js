@@ -20,12 +20,13 @@ let url = "https://productsandstuff.herokuapp.com/api/v1/products";
 
 export const updateRemoteData = (product) => (dispatch) => {
   // return a fucntion that will call superagent API
+  console.log('updateRemoteData : ',product);
   if (product.inventoryCount) {
     console.log("product.inventoryCount :: ", product.inventoryCount);
     return superagent
       .get(`${url}/${product._id}`)
       .then((DBproduct) =>
-      // console.log(DBproduct.body)
+      // console.log(' inventoryCount before put ===> ',DBproduct.body[0].inventoryCount)
         superagent
           .put(`${url}/${DBproduct.body[0]._id}`)
           .send({ ...DBproduct, inventoryCount: DBproduct.body.inventoryCount - 1 })
