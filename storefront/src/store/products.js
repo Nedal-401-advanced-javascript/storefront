@@ -30,7 +30,7 @@ export default (state = initalState, action) => {
       };
     // add new case to handle get
     case "GET":
-      return { ...state, products: action.payload };
+      return { listOnActive:action.payload, products: action.payload };
 
     default:
       return state;

@@ -9,7 +9,7 @@ export default (state = initalState, action) => {
     case "updateAction":
       return { ...state, active: action.payload };
     case "GetCategories":
-      return { ...state, categories: action.payload };
+      return { active: action.payload[0], categories: action.payload };
     default:
       return state;
   }
