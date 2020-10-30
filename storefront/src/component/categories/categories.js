@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { updateActive,getCategories } from "../../store/categories";
 function Categories(props) {
-  console.log(props.categories);
   useEffect(()=>{
     props.getCategories()
-  })
+  },[])
   return (
     <ul>
       {props.categories.categories.map((ele,i) => {

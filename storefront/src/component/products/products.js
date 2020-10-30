@@ -67,7 +67,7 @@ function Products(props) {
                   <CardActions>
                     <Button
                       size="small"
-                      onClick={() => props.updateCart(ele)}
+                      onClick={() => props.updateCart(ele,i)}
                     >
                       add to cart
                     </Button>
@@ -87,7 +87,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch, getState) => ({
   get: () => dispatch(getRemoteData()),
-  updateCart: (product) => dispatch(updateRemoteData(product)),
+  updateCart: (product,i) => dispatch(updateRemoteData(product,i)),
 });
 // 2 add remote function
 
