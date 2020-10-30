@@ -1,7 +1,3 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { updateRemoteData } from "../../store/cart";
-import { getRemoteData } from "../../store/products";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -10,7 +6,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
-
 const useStyles = makeStyles({
   root: {
     // minWidth: 275,
@@ -30,18 +25,34 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
-function Products(props) {
-  const classes = useStyles();
-  //  1 useEffect(at the loading wich treger get )
-  useEffect(() => {
-    props.get();
-  }, []);
+function productModel(props) {
+  // const classes = useStyles();
+  const classes = makeStyles({
+    root: {
+      // minWidth: 275,
+      // width: "25%",
+      flexGrow: 1,
+      padding: 1,
+    },
+    bullet: {
+      display: "inline-block",
+      margin: "0 2px",
+      transform: "scale(0.8)",
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  });
+  console.log(props, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
   return (
     <div className={classes.root}>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={3}>
-          {props.Products.listOnActive.map((ele, i) => {
+          {props.Products.map((ele, i) => {
             return (
               <Grid item xs={4} key={i}>
                 <Card className={classes.root} variant="outlined" key={i}>
@@ -91,14 +102,5 @@ function Products(props) {
     </div>
   );
 }
-// state came from the reducer  combineReducers({ products, categories });
-const mapStateToProps = (state) => ({
-  Products: state.products,
-});
-const mapDispatchToProps = (dispatch, getState) => ({
-  get: () => dispatch(getRemoteData()),
-  updateCart: (product, i) => dispatch(updateRemoteData(product, i)),
-});
-// 2 add remote function
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default productModel;

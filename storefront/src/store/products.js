@@ -4,7 +4,7 @@ import superagent from "superagent";
 // Each product should have a category association, name, description, price, inventory count
 let initalState = {
   products: [],
-  listOnActive: ['choose The categorey you want'],
+  listOnActive: ["choose The categorey you want"],
 };
 
 export default (state = initalState, action) => {
@@ -19,19 +19,18 @@ export default (state = initalState, action) => {
       };
 
     case "addToCart":
-      let updatedCount = state.products.map((product) => {
-        if (product.name == action.payload && product.inventoryCount) {
-          return { ...product, inventoryCount: product.inventoryCount - 1 };
-        } else {
-          return product;
-        }
-      });
-      console.log("updatedCount", updatedCount);
-      return { ...state,products: updatedCount };
+      let { product, id } = action.payload;
+      return {
+        listOnActive: state.listOnActive.map((ele) =>
+        ele._id === product._id ? product : ele
+        ),
+        products: state.products.map((ele) =>
+          ele._id === product._id ? product : ele
+        ),
+      };
     // add new case to handle get
     case "GET":
-      console.log("reached the GET case,", action);
-      return {...state, products: action.payload };
+      return { listOnActive:action.payload, products: action.payload };
 
     default:
       return state;
@@ -45,7 +44,6 @@ export const getRemoteData = () => (dispatch) => {
   // return a fucntion that will call superagent API
   return superagent.get(url).then((data) => {
     // call my action after getting the API response.
-    console.log(data);
     dispatch(getAction(data.body));
   });
 };
@@ -59,4 +57,3 @@ const getAction = (payload) => {
     payload: payload,
   };
 };
-
