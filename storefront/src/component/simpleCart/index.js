@@ -26,8 +26,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   cart: {
-    flexGrow: 1,
+    border: 0,
+    borderRadius: 3,
+    color: "black",
+    padding: "0 30px",
+    background: "#8c9eff",
+    // boxShadow: "0 3px 5px 2px #8c9eff",
+    // maxWidth: "auto",
+    
   },
+
 }));
 function SimpleCart(props) {
   const classes = useStyles();
@@ -49,11 +57,7 @@ function SimpleCart(props) {
       <h3>
         <NavLink to="/cart">
           <Link color="textPrimary" component="button" underline="none">
-            <Typography
-              color="primary"
-              variant="h6"
-              className={classes.cart}
-            >
+            <Typography  color="primary" variant="h6" className={classes.cart}>
               ({items.length || 0}) items in Cart
             </Typography>
           </Link>
