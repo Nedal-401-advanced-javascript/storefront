@@ -5,8 +5,9 @@ import Tab from "@material-ui/core/Tab";
 import { connect } from "react-redux";
 import { updateActive, getCategories } from "../../store/categories";
 function Categories(props) {
+
   useEffect(() => {
-    props.getCategories();
+    if(!props.categories.active)props.getCategories();
   });
   let activeIndex = 0;
   props.categories.categories.forEach((ele, i) => {

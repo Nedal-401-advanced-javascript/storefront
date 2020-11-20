@@ -34,7 +34,7 @@ function Products(props) {
   const classes = useStyles();
   //  1 useEffect(at the loading wich treger get )
   useEffect(() => {
-    props.get();
+    if(!props.Products.products.length) props.get();
   });
 
   return (
