@@ -39,7 +39,7 @@ function Header() {
       <AppBar position="static">
         <Toolbar>
           <NavLink to="/">
-            <Link color="textPrimary" component="button" underline="none">
+            <Link component="button" underline="none">
               <Typography
                 color="secondary"
                 variant="h4"
