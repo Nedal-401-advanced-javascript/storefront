@@ -1,10 +1,9 @@
-import superagent from 'superagent'
+import superagent from "superagent";
 let initalState = {
   categories: [],
   active: null,
 };
-
-export default (state = initalState, action) => {
+const catReducer = (state = initalState, action) => {
   switch (action.type) {
     case "updateAction":
       return { ...state, active: action.payload };
@@ -36,3 +35,4 @@ export const getCategories = () => (dispatch) => {
   });
 };
 // update
+export default catReducer;

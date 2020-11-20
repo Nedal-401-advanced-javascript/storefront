@@ -6,25 +6,25 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
-const useStyles = makeStyles({
-  root: {
-    // minWidth: 275,
-    // width: "25%",
-    flexGrow: 1,
-    padding: 1,
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     // minWidth: 275,
+//     // width: "25%",
+//     flexGrow: 1,
+//     padding: 1,
+//   },
+//   bullet: {
+//     display: "inline-block",
+//     margin: "0 2px",
+//     transform: "scale(0.8)",
+//   },
+//   title: {
+//     fontSize: 14,
+//   },
+//   pos: {
+//     marginBottom: 12,
+//   },
+// });
 function productModel(props) {
   // const classes = useStyles();
   const classes = makeStyles({

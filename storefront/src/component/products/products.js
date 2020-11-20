@@ -35,7 +35,7 @@ function Products(props) {
   //  1 useEffect(at the loading wich treger get )
   useEffect(() => {
     props.get();
-  }, []);
+  });
 
   return (
     <div className={classes.root}>

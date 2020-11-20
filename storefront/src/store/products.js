@@ -7,7 +7,7 @@ let initalState = {
   listOnActive: ["choose The categorey you want"],
 };
 
-export default (state = initalState, action) => {
+const productReducer = (state = initalState, action) => {
   switch (action.type) {
     case "updateAction":
       // state = initalState;
@@ -20,9 +20,10 @@ export default (state = initalState, action) => {
 
     case "addToCart":
       let { product, id } = action.payload;
+      console.log(id);
       return {
         listOnActive: state.listOnActive.map((ele) =>
-        ele._id === product._id ? product : ele
+          ele._id === product._id ? product : ele
         ),
         products: state.products.map((ele) =>
           ele._id === product._id ? product : ele
@@ -30,7 +31,7 @@ export default (state = initalState, action) => {
       };
     // add new case to handle get
     case "GET":
-      return { listOnActive:action.payload, products: action.payload };
+      return { listOnActive: action.payload, products: action.payload };
 
     default:
       return state;
@@ -57,3 +58,4 @@ const getAction = (payload) => {
     payload: payload,
   };
 };
+export default productReducer;

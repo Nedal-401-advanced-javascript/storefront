@@ -1,7 +1,6 @@
 import superagent from "superagent";
 let cart = [];
-
-export default (state = cart, action) => {
+const cartReducer = (state = cart, action) => {
   switch (action.type) {
     case "addToCart":
       return [...state, action.payload.product];
@@ -32,12 +31,10 @@ export const updateRemoteData = (product, i) => (dispatch) => {
       .get(`${url}/${product._id}`)
       .then((DBproduct) =>
         // console.log(' inventoryCount before put ===> ',DBproduct.body[0].inventoryCount)
-        superagent
-          .put(`${url}/${DBproduct.body[0]._id}`)
-          .send({
-            ...DBproduct,
-            inventoryCount: DBproduct.body[0].inventoryCount - 1,
-          })
+        superagent.put(`${url}/${DBproduct.body[0]._id}`).send({
+          ...DBproduct,
+          inventoryCount: DBproduct.body[0].inventoryCount - 1,
+        })
       )
       .then((data) => {
         // call my action after getting the API response.
@@ -67,3 +64,4 @@ export const delItem = (itemId) => {
   };
 };
 
+export default cartReducer;

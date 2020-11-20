@@ -7,7 +7,7 @@ import { updateActive, getCategories } from "../../store/categories";
 function Categories(props) {
   useEffect(() => {
     props.getCategories();
-  }, []);
+  });
   let activeIndex = 0;
   props.categories.categories.forEach((ele, i) => {
     if (props.categories.active === ele.name) activeIndex = i;
