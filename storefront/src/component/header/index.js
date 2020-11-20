@@ -39,9 +39,9 @@ function Header() {
       <AppBar position="static">
         <Toolbar>
           <NavLink to="/">
-            <Link component="button" underline="none">
+            <Link  color="#fff" component="button" underline="none">
               <Typography
-                color="secondary"
+                // color="#000"
                 variant="h4"
                 className={classes.title}
               >
